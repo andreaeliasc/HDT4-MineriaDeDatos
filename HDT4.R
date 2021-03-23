@@ -51,3 +51,6 @@ test<-datos[-corte,]
 
 head(train)
 head(test)
+
+fit1<-lm(SalePrice~.,data = datos[,c("GrLivArea","YearBuilt","BsmtUnfSF","TotalBsmtSF","GarageArea","YearRemodAdd", "SalePrice")])
+summary(fit1)
