@@ -40,3 +40,14 @@ scatter.smooth(train$GarageYrBlt, train$SalePrice)
 scatter.smooth(train$GarageArea, train$SalePrice)
 scatter.smooth(train$YearRemodAdd, train$SalePrice)
 
+# Modelo de Regresion Lineal
+porcentaje<-0.7
+datos<-read.csv("train.csv", stringsAsFactors = FALSE)
+set.seed(123)
+flores<-iris
+corte <- sample(nrow(datos),nrow(datos)*porcentaje)
+train<-datos[corte,]
+test<-datos[-corte,]
+
+head(train)
+head(test)
