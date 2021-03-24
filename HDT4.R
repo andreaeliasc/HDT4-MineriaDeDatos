@@ -66,5 +66,5 @@ correlacion <- cor(datos[,c("GrLivArea","YearBuilt","BsmtUnfSF","TotalBsmtSF","G
 correlacion
 corrplot(correlacion)
 
-
+ 
 
