@@ -65,6 +65,6 @@ pairs(~GrLivArea + YearBuilt + BsmtUnfSF + TotalBsmtSF + GarageArea + YearRemodA
 correlacion <- cor(datos[,c("GrLivArea","YearBuilt","BsmtUnfSF","TotalBsmtSF","GarageArea","YearRemodAdd", "SalePrice")])
 correlacion
 corrplot(correlacion)
-
+ 
 
 
