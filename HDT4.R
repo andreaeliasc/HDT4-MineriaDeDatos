@@ -54,3 +54,6 @@ head(test)
 
 fit1<-lm(SalePrice~.,data = datos[,c("GrLivArea","YearBuilt","BsmtUnfSF","TotalBsmtSF","GarageArea","YearRemodAdd", "SalePrice")])
 summary(fit1)
+
+cat("SalePrice = ",round(fit1$coefficients[7],2), "YearRemodAdd + ", round(fit1$coefficients[6],2), "GarageArea + ", round(fit1$coefficients[5],2), "TotalBsmtSF", round(fit1$coefficients[4],2), "BsmtUnfSF + " , round(fit1$coefficients[3],2), "YearBuilt + ", round(fit1$coefficients[2],2), "GrLivArea", round(fit1$coefficients[1],2))
+
