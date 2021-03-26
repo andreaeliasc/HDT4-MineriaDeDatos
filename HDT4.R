@@ -65,6 +65,30 @@ pairs(~GrLivArea + YearBuilt + BsmtUnfSF + TotalBsmtSF + GarageArea + YearRemodA
 correlacion <- cor(datos[,c("GrLivArea","YearBuilt","BsmtUnfSF","TotalBsmtSF","GarageArea","YearRemodAdd", "SalePrice")])
 correlacion
 corrplot(correlacion)
- 
+### Análisis de Residuales  
+predL<-predict(fitMLM_SalePrice, newdata = test)
+## La predicción se ve de esta manera:  
+head(predL)
+length(predL)
+## A los valores de los residuos del modelo se puede acceder a través del parámetro *residuals* del modelo.  
+head(fitMLM_SalePrice$residuals)
+## En los siguientes gráficos se pueden analizar los residuales.
+plot(fitMLM_SalePrice)
+## En el gráfico ***Residuals vs Fitted***
+hist(fitMLM_SalePrice$residuals)
+boxplot(fitMLM_SalePrice$residuals)
+qqnorm(fitMLM_SalePrice$residuals)
+qqline(fitMLM_SalePrice$residuals, col="red")
 
+library(nortest)
+lillie.test(fitMLM_SalePrice$residuals)
 
+## Eficiencia y Efectividad del modelo 
+predMLM<-predict(fitMLM_SalePrice,newdata = test[,c("GrLivArea","YearBuilt","BsmtUnfSF","TotalBsmtSF","GarageArea","YearRemodAdd", "SalePrice")])
+library(caret)
+RMSE(predMLM,test$SalePrice)
+
+plot(test$SalePrice,col="blue")
+points(predMLM, col="red")
+
+summary(test$SalePrice-predMLM)
